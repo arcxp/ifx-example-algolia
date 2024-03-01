@@ -1,7 +1,7 @@
 const algoliasearch = require('algoliasearch')
 
 const fs = require("fs");
-const inputJSON = require("../contentAPIExampleUpdate.json");
+const inputJSON = require("../../contentAPIExampleUpdate.json");
 require('dotenv').config();
 
 // Connect and authenticate with your Algolia app

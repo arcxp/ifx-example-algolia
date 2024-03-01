@@ -28,8 +28,21 @@ function getStoryId(record) {
     }
 }
 
+function environmentCheck() {
+    if(process.env.ALGOLIA_APP_ID === undefined) {
+        throw "Algolia Application ID not defined in environment.";
+    }
+    if(process.env.ALGOLIA_API_KEY === undefined) {
+        throw "Algolia API Key not defined in environment.";
+    }
+    if(process.env.ALGOLIA_INDEX_NAME === undefined) {
+        throw "Algolia Destination Index Name not defined in environment."
+    }
+}
+
 module.exports = {
     stripFields,
     addObjectId,
-    getStoryId
+    getStoryId,
+    environmentCheck
 };
