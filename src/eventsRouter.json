@@ -1,0 +1,5 @@
+{
+  "storyUpdateHandler": ["story:update"],
+  "storyDeleteHandler": ["story:delete"],
+  "storyInsertHandler": ["story:create"]
+}
