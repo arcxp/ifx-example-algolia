@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "74b27acf-71d1-4c00-8689-020da46f7a60",
+		"name": "local server calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27209140"
+	},
+	"item": [
+		{
+			"name": "story:insert",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"organizationId\": \"{{orgHeader}}\",\n    \"currentUserId\": \"{{alarmEmail}}\",\n    \"key\": \"story:create\",\n    \"typeId\": 1,\n    \"body\": {\n        \"date\": \"2022-09-27T21:17:06.247Z\",\n        \"subheadlines\": {\n            \"basic\": \"\"\n        },\n        \"description\": {\n            \"basic\": \"\"\n        },\n        \"language\": \"\",\n        \"source\": {\n            \"system\": \"composer\",\n            \"name\": \"{{orgHeader}}\",\n            \"source_type\": \"staff\"\n        },\n        \"type\": \"story\",\n        \"related_content\": {\n            \"redirect\": [],\n            \"basic\": []\n        },\n        \"credits\": {\n            \"by\": []\n        },\n        \"subtype\": \"\",\n        \"additional_properties\": {\n            \"clipboard\": {},\n            \"has_published_copy\": false\n        },\n        \"id\": \"123456O3BCWZPLTVJCRGSGWCU\",\n        \"last_updated_date\": \"2022-09-27T21:17:06.222Z\",\n        \"owner\": {\n            \"id\": \"sandbox.myOrgName\"\n        },\n        \"address\": {},\n        \"workflow\": {\n            \"status_code\": 1\n        },\n        \"label\": {},\n        \"version\": \"0.10.7\",\n        \"distributor\": {\n            \"name\": \"myOrgName\",\n            \"category\": \"staff\",\n            \"subcategory\": \"\"\n        },\n        \"canonical_website\": \"sample\",\n        \"revision\": {\n            \"user_id\": \"testId@washpost.com\",\n            \"branch\": \"default\",\n            \"revision_id\": \"123456O3BCWZPLTVJCRGSGWCU\"\n        },\n        \"headlines\": {\n            \"tablet\": \"\",\n            \"print\": \"\",\n            \"meta_title\": \"\",\n            \"native\": \"\",\n            \"web\": \"\",\n            \"mobile\": \"\",\n            \"basic\": \"Sample Integration\",\n            \"table\": \"\"\n        },\n        \"_id\": \"123456O3BCWZPLTVJCRGSGWCU\",\n        \"created_date\": \"2022-09-27T21:17:06.222Z\"\n    },\n    \"version\": 2,\n    \"uuid\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/ifx/local/invoke",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"ifx",
+						"local",
+						"invoke"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "story:delete",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"organizationId\": \"{{orgHeader}}\",\n    \"currentUserId\": \"{{alarmEmail}}\",\n    \"key\": \"story:delete\",\n    \"typeId\": 1,\n    \"body\": {\n        \"date\": \"2022-09-27T21:17:06.247Z\",\n        \"subheadlines\": {\n            \"basic\": \"\"\n        },\n        \"description\": {\n            \"basic\": \"\"\n        },\n        \"language\": \"\",\n        \"source\": {\n            \"system\": \"composer\",\n            \"name\": \"{{orgHeader}}\",\n            \"source_type\": \"staff\"\n        },\n        \"type\": \"story\",\n        \"related_content\": {\n            \"redirect\": [],\n            \"basic\": []\n        },\n        \"credits\": {\n            \"by\": []\n        },\n        \"subtype\": \"\",\n        \"additional_properties\": {\n            \"clipboard\": {},\n            \"has_published_copy\": false\n        },\n        \"id\": \"123456O3BCWZPLTVJCRGSGWCU\",\n        \"last_updated_date\": \"2022-09-27T21:17:06.222Z\",\n        \"owner\": {\n            \"id\": \"sandbox.myOrgName\"\n        },\n        \"address\": {},\n        \"workflow\": {\n            \"status_code\": 1\n        },\n        \"label\": {},\n        \"version\": \"0.10.7\",\n        \"distributor\": {\n            \"name\": \"myOrgName\",\n            \"category\": \"staff\",\n            \"subcategory\": \"\"\n        },\n        \"canonical_website\": \"sample\",\n        \"revision\": {\n            \"user_id\": \"testId@washpost.com\",\n            \"branch\": \"default\",\n            \"revision_id\": \"123456O3BCWZPLTVJCRGSGWCU\"\n        },\n        \"headlines\": {\n            \"tablet\": \"\",\n            \"print\": \"\",\n            \"meta_title\": \"\",\n            \"native\": \"\",\n            \"web\": \"\",\n            \"mobile\": \"\",\n            \"basic\": \"Sample Integration\",\n            \"table\": \"\"\n        },\n        \"_id\": \"123456O3BCWZPLTVJCRGSGWCU\",\n        \"created_date\": \"2022-09-27T21:17:06.222Z\"\n    },\n    \"version\": 2,\n    \"uuid\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/ifx/local/invoke",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"ifx",
+						"local",
+						"invoke"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "story:update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"organizationId\": \"{{orgHeader}}\",\n    \"currentUserId\": \"{{alarmEmail}}\",\n    \"key\": \"story:update\",\n    \"typeId\": 1,\n    \"body\": {\n        \"date\": \"2022-09-27T21:17:06.247Z\",\n        \"subheadlines\": {\n            \"basic\": \"\"\n        },\n        \"description\": {\n            \"basic\": \"\"\n        },\n        \"language\": \"\",\n        \"source\": {\n            \"system\": \"ContentAPI\",\n            \"name\": \"{{orgHeader}}\",\n            \"source_type\": \"staff\"\n        },\n        \"type\": \"story\",\n        \"related_content\": {\n            \"redirect\": [],\n            \"basic\": []\n        },\n        \"credits\": {\n            \"by\": []\n        },\n        \"subtype\": \"\",\n        \"additional_properties\": {\n            \"clipboard\": {},\n            \"has_published_copy\": false\n        },\n        \"id\": \"123456O3BCWZPLTVJCRGSGWCU\",\n        \"last_updated_date\": \"2022-09-27T21:17:06.222Z\",\n        \"owner\": {\n            \"id\": \"sandbox.myOrgName\"\n        },\n        \"address\": {},\n        \"workflow\": {\n            \"status_code\": 1\n        },\n        \"label\": {},\n        \"version\": \"0.10.7\",\n        \"distributor\": {\n            \"name\": \"myOrgName\",\n            \"category\": \"staff\",\n            \"subcategory\": \"\"\n        },\n        \"canonical_website\": \"sample\",\n        \"revision\": {\n            \"user_id\": \"testId@washpost.com\",\n            \"branch\": \"default\",\n            \"revision_id\": \"123456O3BCWZPLTVJCRGSGWCU\"\n        },\n        \"headlines\": {\n            \"tablet\": \"\",\n            \"print\": \"\",\n            \"meta_title\": \"\",\n            \"native\": \"\",\n            \"web\": \"\",\n            \"mobile\": \"\",\n            \"basic\": \"Sample Integration\",\n            \"table\": \"\"\n        },\n        \"_id\": \"123456O3BCWZPLTVJCRGSGWCU\",\n        \"created_date\": \"2022-09-27T21:17:06.222Z\"\n    },\n    \"version\": 2,\n    \"uuid\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/ifx/local/invoke",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"ifx",
+						"local",
+						"invoke"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
