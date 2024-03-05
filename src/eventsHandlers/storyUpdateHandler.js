@@ -8,7 +8,7 @@ const storyUpdateHandler = async (event) => {
   logger.debug(`Full inbound event: ${event}`);
 
   try {
-    utils.environmentCheck();
+    utils.validateAlgoliaConfigExists();
   } catch(e) {
     logger.error(`Undefined required secret: ${e}`);
     return {"status": `FAILED. ${e}`};

@@ -29,7 +29,7 @@ function getStoryId(record) {
     }
 }
 
-function environmentCheck(logger) {
+function validateAlgoliaConfigExists(logger) {
     if(process.env.ALGOLIA_APP_ID === undefined) {
         throw "Algolia Application ID not defined in environment.";
     }
@@ -55,6 +55,6 @@ module.exports = {
     stripFields,
     addObjectId,
     getStoryId,
-    environmentCheck,
+    validateAlgoliaConfigExists,
     getLogger
 };

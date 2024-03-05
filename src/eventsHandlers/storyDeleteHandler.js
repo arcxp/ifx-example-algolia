@@ -6,7 +6,7 @@ const storyDeleteHandler = async (event) => {
   const logger = utils.getLogger();
   logger.debug(`Running Story Delete Handler`);
   try {
-    utils.environmentCheck();
+    utils.validateAlgoliaConfigExists();
   } catch(e) {
     logger.error(`Undefined required secret: ${e}`);
     return {"status": `FAILED. ${e}`};
