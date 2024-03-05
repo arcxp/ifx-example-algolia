@@ -1,5 +1,5 @@
 ## Arc-IFX -> Algolia Integration 
-This recipe can be used as a starting point for integrating Algolia as your site's primary search partner.  The integration uses the storyID as the Algolia required "objectId" for indexing.
+This recipe can be used as a starting point for integrating Algolia as your site's primary search partner.  The integration uses the storyID as the Algolia required "objectId" for indexing.  Each call to Algolia uses their .wait() functionality to properly wait for a full call response.  This can increase response time significantly.  For larger data sets or larger indices, this may or may not run closer to the IFX integration timeout limit (60 seconds).  Be aware this may need to be changed depending on the size of your index.
 
 ### What this integration does do
 - The integration will update your Algolia search index when it receives the following events:
@@ -10,7 +10,7 @@ This recipe can be used as a starting point for integrating Algolia as your site
 ### What this integration does not do
 - The integration assumed you already have an index up and running in Algolia, it will not create a new index.
 - The integration does not perform any searches.  Integrating search will need to be done on your front end.
-
+- 
 ### Secrets needed
 You will need to create 4 secrets using the IFX API (/ifx/api/v1/admin/secret?integrationName=<integrationName>).  You can find these values in your Algolia account settings page.
 1. ALGOLIA_API_KEY
