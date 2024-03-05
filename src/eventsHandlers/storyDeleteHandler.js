@@ -19,7 +19,7 @@ const storyDeleteHandler = async (event) => {
     logger.info(`Removing storyID: ${storyIdToDelete} from Algolia`);
     index = client.initIndex(process.env.ALGOLIA_INDEX_NAME);
     if(index) {
-      await ndex.deleteObject(storyIdToDelete);
+      await index.deleteObject(storyIdToDelete).wait();
     }
   } catch(e) {
     logger.error(LOG_LEVEL, `Error removing story from Algolia: ${e}`);

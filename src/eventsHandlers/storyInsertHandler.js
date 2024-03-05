@@ -22,7 +22,7 @@ const storyInsertHandler = async (event) => {
     let index = client.initIndex(process.env.ALGOLIA_INDEX_NAME);
     logger.debug(`Writing event for storyId: ${outboundRecord.objectID} to Algolia`);
     if(index) {
-      await index.saveObject(outboundRecord);
+      await index.saveObject(outboundRecord).wait();
     }
   } catch(e) {
     logger.error(`failed to insert story into Algolia -- ${e}`);

@@ -22,7 +22,7 @@ const storyUpdateHandler = async (event) => {
     let index = client.initIndex(process.env.ALGOLIA_INDEX_NAME);
     if(index) {
       logger.debug(`Updating event for storyId: ${outboundRecord.objectID} to Algolia`);
-      await index.partialUpdateObject(outboundRecord);
+      await index.partialUpdateObject(outboundRecord).wait();
     }
   } catch(e) {
     logger.error(`failed to update story in Algolia -- ${e}`);
