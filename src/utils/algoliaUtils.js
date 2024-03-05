@@ -1,4 +1,5 @@
 // Customize the fields that are needed in search results and to be removed from the algolia record.
+const winston = require("winston");
 const fieldsToStrip = ["address", "workflow", "taxonomy", "planning"];
 const ANS_ID_NAME = "_id";
 const REQUIRED_ALGOLIA_OBJECT_NAME = "objectID";
@@ -28,7 +29,7 @@ function getStoryId(record) {
     }
 }
 
-function environmentCheck() {
+function environmentCheck(logger) {
     if(process.env.ALGOLIA_APP_ID === undefined) {
         throw "Algolia Application ID not defined in environment.";
     }
@@ -40,9 +41,20 @@ function environmentCheck() {
     }
 }
 
+function getLogger() {
+    const LOG_LEVEL = (process.env.LOG_LEVEL!== undefined)?process.env.LOG_LEVEL:"Error";
+    const logger = winston.createLogger({
+        level: LOG_LEVEL,
+        format: winston.format.json(),
+        transports: [new winston.transports.Console()],
+    });
+    return logger;
+}
+
 module.exports = {
     stripFields,
     addObjectId,
     getStoryId,
-    environmentCheck
+    environmentCheck,
+    getLogger
 };

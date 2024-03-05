@@ -1,27 +1,31 @@
 const algoliasearch = require("algoliasearch");
 const utils = require("../utils/algoliaUtils");
+const winston = require('winston');
+
 const storyUpdateHandler = (event) => {
-  console.log(`Running Story Update Handler`);
-  console.log(event);
+  const logger = utils.getLogger();
+  logger.debug(`Running Story Update Handler`);
+  logger.debug(`Full inbound event: ${event}`);
 
   try {
     utils.environmentCheck();
   } catch(e) {
+    logger.error(`Undefined required secret: ${e}`);
     return {"status": `FAILED. ${e}`};
   }
-
   const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY)
-  let index;
 
   try {
+    // only write what is necessary to index
     let outboundRecord = utils.stripFields(event.body);
     utils.addObjectId(outboundRecord);
-    index = client.initIndex(process.env.ALGOLIA_INDEX_NAME);
+    let index = client.initIndex(process.env.ALGOLIA_INDEX_NAME);
     if(index) {
+      logger.debug(`Updating event for storyId: ${outboundRecord.objectID} to Algolia`);
       index.partialUpdateObject(outboundRecord);
     }
   } catch(e) {
-    console.error(e);
+    logger.error(`failed to update story in Algolia -- ${e}`);
     return { "status": `failed -- ${e}` }
   }
   return {"status": "successfully updated story in Algolia"}

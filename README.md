@@ -12,10 +12,14 @@ This recipe can be used as a starting point for integrating Algolia as your site
 - The integration does not perform any searches.  Integrating search will need to be done on your front end.
 
 ### Secrets needed
-You will need to create 3 secrets using the IFX API (/ifx/api/v1/admin/secret?integrationName=<integrationName>).  You can find these values in your Algolia account settings page.
+You will need to create 4 secrets using the IFX API (/ifx/api/v1/admin/secret?integrationName=<integrationName>).  You can find these values in your Algolia account settings page.
 1. ALGOLIA_API_KEY
 2. ALGOLIA_APP_ID
 3. ALGOLIA_INDEX_NAME
+4. LOG_LEVEL
+
+### Logging
+This recipe uses winston as a logger, but feel free to use any logger of your choice.  If you decide to log to multiple places, please make sure to include the console as one of your loggers to ensure logs are written to CloudWatch.  Secrets can be used as a work-around solution for setting environment variables such as log level on the fly.  Secrets are loaded into integrations on every run with no caching, so updates will be seen upon the next invocation of your integration.
 
 ## Building your integration
 
