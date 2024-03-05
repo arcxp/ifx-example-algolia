@@ -2,7 +2,7 @@ const algoliasearch = require("algoliasearch");
 const utils = require("../utils/algoliaUtils");
 const winston = require('winston');
 
-const storyUpdateHandler = (event) => {
+const storyUpdateHandler = async (event) => {
   const logger = utils.getLogger();
   logger.debug(`Running Story Update Handler`);
   logger.debug(`Full inbound event: ${event}`);
@@ -22,7 +22,7 @@ const storyUpdateHandler = (event) => {
     let index = client.initIndex(process.env.ALGOLIA_INDEX_NAME);
     if(index) {
       logger.debug(`Updating event for storyId: ${outboundRecord.objectID} to Algolia`);
-      index.partialUpdateObject(outboundRecord);
+      await index.partialUpdateObject(outboundRecord);
     }
   } catch(e) {
     logger.error(`failed to update story in Algolia -- ${e}`);

@@ -2,7 +2,7 @@ const algoliasearch = require("algoliasearch");
 const utils = require("../utils/algoliaUtils");
 const winston = require('winston');
 
-const storyInsertHandler = (event) => {
+const storyInsertHandler = async (event) => {
   const logger = utils.getLogger();
   logger.debug(`Running Story Insert Handler`);
   logger.debug(`Full inbound event: ${event}`);
@@ -22,7 +22,7 @@ const storyInsertHandler = (event) => {
     let index = client.initIndex(process.env.ALGOLIA_INDEX_NAME);
     logger.debug(`Writing event for storyId: ${outboundRecord.objectID} to Algolia`);
     if(index) {
-      index.saveObject(outboundRecord);
+      await index.saveObject(outboundRecord);
     }
   } catch(e) {
     logger.error(`failed to insert story into Algolia -- ${e}`);
