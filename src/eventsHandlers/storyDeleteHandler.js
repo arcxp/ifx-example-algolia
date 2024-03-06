@@ -5,6 +5,7 @@ const winston = require('winston');
 const storyDeleteHandler = async (event) => {
   const logger = utils.getLogger();
   logger.debug(`Running Story Delete Handler`);
+  logger.debug(`Full inbound event: ${event}`);
   try {
     utils.validateAlgoliaConfigExists();
   } catch(e) {
