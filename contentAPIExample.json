@@ -1,0 +1,74 @@
+{
+    "_id": "default_false_LZCIOCZGCREHZMG7XJGXDP27CQ",
+    "additional_properties": {
+    "has_published_copy": false
+},
+    "canonical_website": "localhost00",
+    "content_elements": [
+    {
+        "content": "This is normal story content and will always appear when the story is requested from Content API",
+        "type": "text"
+    },
+    {
+        "_id": "AAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "content_zone",
+        "additional_properties": {
+            "comments": [
+                "The content_zone element will never appear when the story is requested from Content API.",
+                "It will be replaced from the variant data if both statements are true",
+                "  1) The condition is met (ie: a variant is defined for the requested website)",
+                "  2) Content for this zone is defined (ie: element_group exists in content_elements with a matching ID)",
+                "If no variants satisfy these 2 conditions, this element will be removed from the Content API response"
+            ]
+        }
+    }
+],
+    "created_date": {
+    "$date": {
+        "$numberLong": "1663282302721"
+    }
+},
+    "display_date": "2021-03-03T00:00:00Z",
+    "headlines": {
+    "basic": "My headlines"
+},
+    "last_updated_date": {
+    "$date": {
+        "$numberLong": "1663282999996"
+    }
+},
+    "owner": {
+    "id": "localhost",
+        "sponsored": false
+},
+    "publish_date": {
+    "$date": {
+        "$numberLong": "1614729600000"
+    }
+},
+    "revision": {
+    "branch": "default",
+        "parent_id": "OE5PKNKS6ZF7PFIMHXRJJHQAKA",
+        "published": false,
+        "revision_id": "GINPHSVSSRGXFO3KFFTBMKUE6A"
+},
+    "taxonomy": {
+    "tags": [
+        {
+            "description": "Hub Tag",
+            "slug": "hubtag",
+            "text": "HubTag"
+        }
+    ]
+},
+    "type": "story",
+    "version": "0.10.9",
+    "last_updated_date_str": "2022-09-15T23:03:19.996Z",
+    "created_date_str": "2022-09-15T22:51:42.721Z",
+    "publish_date_str": "2021-03-03T00:00:00Z",
+    "last_indexed_date": {
+    "$date": {
+        "$numberLong": "1663283014945"
+    }
+}
+}
