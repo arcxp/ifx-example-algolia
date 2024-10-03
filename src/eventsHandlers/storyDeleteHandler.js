@@ -1,6 +1,5 @@
 const algoliasearch = require("algoliasearch");
 const utils = require("../utils/algoliaUtils");
-const winston = require('winston');
 
 const storyDeleteHandler = async (event) => {
   const logger = utils.getLogger();
