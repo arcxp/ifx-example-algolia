@@ -1,25 +1,31 @@
-## Arc-IFX -> Algolia Integration 
-This recipe can be used as a starting point for integrating Algolia as your site's primary search partner.  The integration uses the storyID as the Algolia required "objectId" for indexing.  Each call to Algolia uses their .wait() functionality to properly wait for a full call response.  This can increase response time significantly.  For larger data sets or larger indices, this may or may not run closer to the IFX integration timeout limit (60 seconds).  Be aware this may need to be changed depending on the size of your index.
+Example code is provided by a community of developers. They are intended to help you get started more quickly, but are not guaranteed to cover all scenarios nor are they supported by Arc XP.
 
-### What this integration does do
+> These examples are licensed under the [MIT license](https://mit-license.org/): THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Reiterated from license above, all code in this example is free to use, and as such, there is NO WARRANTY, SLA or SUPPORT for these examples.
+
+## Description
+This example code can be used as a starting point for integrating Algolia as your site's primary search partner. The integration uses the storyID as the Algolia required "objectId" for indexing. Each call to Algolia uses their `.wait()` functionality to properly wait for a full call response.  This can increase response time significantly. For larger data sets or larger indices, this may or may not run closer to the IFX integration timeout limit (60 seconds). Be aware this may need to be changed depending on the size of your index.
+
+## What it does
 - The integration will update your Algolia search index when it receives the following events:
-  - story:create - Will add the story data to your Algolia search index
-  - story:delete - Will remove the story (by storyID) from your Algolia search index
-  - story:update - Will update the existing story data (by storyID) in your Algolia search index
-- 
-### What this integration does not do
+  - `story:create` - Adds the story data to your Algolia search index
+  - `story:delete` - Removes the story (by storyID) from your Algolia search index
+  - `story:update` - Updates the existing story data (by storyID) in your Algolia search index
+
+## What it does not do
 - The integration assumed you already have an index up and running in Algolia, it will not create a new index.
-- The integration does not perform any searches.  Integrating search will need to be done on your front end.
+- The integration does not perform any searches. Integrating search will need to be done on your front end.
 - 
-### Secrets needed
-You will need to create 4 secrets using the IFX API (/ifx/api/v1/admin/secret?integrationName=<integrationName>).  You can find these values in your Algolia account settings page.
+## Secrets needed
+You will need to create 4 secrets using the [IFX API](https://dev.arcxp.com/api/ifx/ifx-production/) endpoint `/ifx/api/v1/admin/secret?integrationName=<integrationName>`. You can find these values in your Algolia account settings page.
 1. ALGOLIA_API_KEY
 2. ALGOLIA_APP_ID
 3. ALGOLIA_INDEX_NAME
 4. LOG_LEVEL
 
-### Logging
-This recipe uses winston as a logger, but feel free to use any logger of your choice.  If you decide to log to multiple places, please make sure to include the console as one of your loggers to ensure logs are written to CloudWatch.  Secrets can be used as a work-around solution for setting environment variables such as log level on the fly.  Secrets are loaded into integrations on every run with no caching, so updates will be seen upon the next invocation of your integration.
+## Logging
+This recipe uses winston as a logger, but feel free to use any logger of your choice. If you decide to log to multiple places, please make sure to include the console as one of your loggers to ensure logs are written to CloudWatch. Secrets can be used as a work-around solution for setting environment variables such as log level on the fly. Secrets are loaded into integrations on every run with no caching, so updates will be seen upon the next invocation of your integration.
 
 ## Building your integration
 
@@ -83,15 +89,13 @@ To test secrets while running the local development server, you should create a 
 the root directory of your project and store them there. **Note: This file containing secrets should NOT be committed to version control.**
 
 ## Moving your Integration from local to IFX
-With 2.0, IFX has moved to the PageBuilder model where code is zipped, uploaded, deployed, and promoted.
+In IFX, code is zipped, uploaded, deployed, and promoted.
 
 A nominal deploy process looks as follows:
 
      │ Bundle ├───────►│ Upload ├──────►│ Deploy ├─────►│ Promote │
 
-We go into more detail on our 2.0 landing page in ALC: https://docs.arcxp.com/alc/en/welcome-to-the-ifx-2-0-world?sys_kb_id=86e2bb7a8759b110637f315d0ebb3592&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=ea18b7fe8759b110637f315d0ebb350a
-
-Node.js Specific bundling detail is discussed in ALC here: https://docs.arcxp.com/alc/en/bundle-deployment-workflow-2-0-only?id=kb_article_view&sys_kb_id=1634b3fa8759b110637f315d0ebb35a8&spa=1#mcetoc_1haaaajev29
+You can find more information in ALC: [Bundle Deployment Workflow](https://docs.arcxp.com/alc/en/bundle-deployment-workflow?sys_kb_id=24f19bb687b48210637f315d0ebb355d&id=kb_article_view&sysparm_rank=14&sysparm_tsqueryId=2ed0645947419650a87626c2846d43f3)
 
 ### Bundling your code
 Once your code is tested locally, it can be bundled into a zip file for uploading to IFX.
@@ -111,7 +115,7 @@ curl -X POST \
 ```
 
 ### Deploying your bundle
-Once your zip is uploaded, it must be deployed into the IFX framework.  This is a discrete step from uploading, as some uploaded bundles may not need to be used or are immediately replaced.
+Once your zip is uploaded, it must be deployed into the IFX framework. This is a discrete step from uploading, as some uploaded bundles may not need to be used or are immediately replaced.
 ```
 POST /ifx/api/v1/admin/bundles/{integrationName}/deploy/{bundleName}
 ```
@@ -121,3 +125,6 @@ After deploying, your code will be ready to handle invocations, but it is not ye
 ```
 POST /ifx/api/v1/admin/bundles/{integrationName}/promote/{version}
 ```
+
+### Subscribing to events
+Your integration will not be invoked unless you are subscribed to the desired events. You can find more information about this on the [IFX Events](https://docs.arcxp.com/alc/en/ifx-events?id=kb_article_view&sys_kb_id=526d6dcf47841610a87626c2846d4382) page.
